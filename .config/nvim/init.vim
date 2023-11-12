@@ -15,3 +15,4 @@ set title
 set mouse=a
 
 autocmd BufNewFile,BufRead *.sh set formatprg=shfmt\ -i\ 2
+autocmd BufNewFile,BufRead *.json set tabstop=2 softtabstop=2 shiftwidth=2
