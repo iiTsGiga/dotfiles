@@ -1,0 +1,13 @@
+[user]
+    name = Manuel-Alexander Oppermann
+    email = manuel.alexander.oppermann@gmail.com
+
+[core]
+    editor = nvim
+
+[pull]
+    rebase = true
+
+[init]
+    defaultBranch = main
+
