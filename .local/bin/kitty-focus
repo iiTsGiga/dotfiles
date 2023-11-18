@@ -1,9 +1,8 @@
 #!/bin/bash
 
-kitty_id="$(xdotool search --class kitty)"
-
-if [ -n "$kitty_id" ]; then
-  xdotool windowactivate "$kitty_id"
-else 
-  kitty --title Kitty
+wmctrl -xl | grep "\bkitty.kitty\b" >/dev/null
+if [ $? -eq 0 ]; then
+  wmctrl -xR kitty.kitty
+else
+  kitty --title Kitty &
 fi
