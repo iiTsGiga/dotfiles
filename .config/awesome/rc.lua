@@ -19,6 +19,9 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 -- To check if host is desktop or laptop
 local is_ideapad = string.find(require("hostname").getHostname(), "ideapad")
+-- Battery indicator widget
+local battery_widget = nil
+if is_ideapad then battery_widget = require("battery-widget") end
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -170,6 +173,30 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+local my_battery_widget = nil
+if is_ideapad then
+    my_battery_widget = battery_widget {
+        ac = "ADP0",
+        adapter = "BAT0",
+        ac_prefix = "🔌",
+        battery_prefix = "🔋",
+        percent_colors = {
+            { 25, "red"   },
+            { 50, "orange"},
+            {999, "green" },
+        },
+        listen = true,
+        timeout = 10,
+        widget_text = "${AC_BAT}${color_on}${percent}%${color_off}",
+        tooltip_text = "Battery ${state}${time_est}\nCapacity: ${capacity_percent}%",
+        alert_threshold = 5,
+        alert_timeout = 0,
+        alert_title = "Low battery !",
+        alert_text = "${AC_BAT}${time_est}",
+        warn_full_battery = true,
+    }
+end
+
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
@@ -220,6 +247,7 @@ awful.screen.connect_for_each_screen(function(s)
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
+            my_battery_widget,
         },
     }
 end)
@@ -527,11 +555,6 @@ client.connect_signal("manage", function (c)
     end
 end)
 
--- Enable sloppy focus, so that focus follows mouse.
--- client.connect_signal("mouse::enter", function(c)
---     c:emit_signal("request::activate", "mouse_enter", {raise = false})
--- end)
-
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
@@ -541,5 +564,8 @@ beautiful.useless_gap = 5
 
 -- Autostart
 awful.spawn.with_shell("picom")
-awful.spawn.with_shell("nitrogen --set-zoom-fill --random ~/Pictures/Wallpapers")
-
+awful.spawn.with_shell("nitrogen " .. is_ideapad and "--restore" or "--set-zoom-fill --random ~/Pictures/Wallpapers")
+if is_ideapad then
+    awful.spawn.with_shell("xinput set-prop \"MSFT0001:00 06CB:CE2D Touchpad\" \"libinput Tapping Enabled\" 1")
+    awful.spawn.with_shell("xinput set-prop \"MSFT0001:00 06CB:CE2D Touchpad\" \"libinput Natural Scrolling Enabled\" 1")
+end
