@@ -1,3 +1,4 @@
+-- see: https://gist.github.com/h1k3r/089d43771bdf811eefe8
 local _M = {}
 function _M.getHostname()
     local f = io.popen ("/bin/hostname")
