@@ -564,7 +564,7 @@ beautiful.useless_gap = 5
 
 -- Autostart
 awful.spawn.with_shell("picom")
-awful.spawn.with_shell("nitrogen " .. is_ideapad and "--restore" or "--set-zoom-fill --random ~/Pictures/Wallpapers")
+awful.spawn.with_shell("nitrogen " .. (is_ideapad and "--restore" or "--set-zoom-fill --random ~/Pictures/Wallpapers"))
 if is_ideapad then
     awful.spawn.with_shell("xinput set-prop \"MSFT0001:00 06CB:CE2D Touchpad\" \"libinput Tapping Enabled\" 1")
     awful.spawn.with_shell("xinput set-prop \"MSFT0001:00 06CB:CE2D Touchpad\" \"libinput Natural Scrolling Enabled\" 1")
