@@ -1,4 +1,7 @@
 configuration {
     terminal: "kitty";
+    modes: [ combi ];
+    combi-modes: [ window, run, ssh ];
 }
-@theme "~/.config/rofi/themes/squared-nord.rasi"
+
+@theme "squared-nord"

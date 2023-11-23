@@ -346,7 +346,7 @@ globalkeys = gears.table.join(
 
     -- Rofi
     awful.key({ modkey },   "r",    function ()
-                                        awful.util.spawn("rofi -show combi -combi-modes window,run,ssh -modes combi") 
+                                        awful.util.spawn("rofi -show combi") 
                                     end,
               {description = "run rofi", group = "launcher"}),
 
