@@ -344,11 +344,11 @@ globalkeys = gears.table.join(
               end,
               {description = "restore minimized", group = "client"}),
 
-    -- Dmenu
+    -- Rofi
     awful.key({ modkey },   "r",    function ()
-                                        awful.util.spawn("dmenu_run") 
+                                        awful.util.spawn("rofi -show combi -combi-modes window,run,ssh -modes combi") 
                                     end,
-              {description = "run dmenu", group = "launcher"}),
+              {description = "run rofi", group = "launcher"}),
 
     -- Brave
     awful.key({ modkey },   "b",    function ()
