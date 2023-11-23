@@ -1,11 +1,12 @@
-require("basic_vim_init")
+require("iitsgiga.core")
+require("iitsgiga.lazy")
 
 local filetype = vim.bo.filetype
 if filetype == "make" then
-    basic_vim_init(nil, true)
+    vim.opt.expandtab = false
 elseif filetype == "sh" then
-    basic_vim_init(2, nil)
-else
-    basic_vim_init()
+    vim.opt.tabstop = 2
+    vim.opt.shiftwidth = 2
+    vim.opt.softtabstop = 2
 end
 
