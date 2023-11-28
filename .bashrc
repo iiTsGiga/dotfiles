@@ -38,12 +38,12 @@ eval "$(oh-my-posh init bash --config ~/.omp.json)"
 
 ## aliases
 
-if [[ "$TERM" = "xterm-kitty" ]] && which kitten >/dev/null; then
+if [[ "$TERM" = "xterm-kitty" ]] && which kitten 2>/dev/null >/dev/null; then
   alias ssh="kitten ssh"
   alias icat="kitten icat"
 fi
 
-if which xdg-open >/dev/null; then
+if which xdg-open >/dev/null 2>/dev/null; then
   alias open="xdg-open"
 fi
 
@@ -61,6 +61,12 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias ll="ls -lah"
+
+if which exa >/dev/null 2>/dev/null; then
+    alias ls="exa"
+    alias ll="exa -lah"
+    alias tree="exa -lahT"
+fi
 
 alias bashrc='nvim $HOME/.bashrc'
 
