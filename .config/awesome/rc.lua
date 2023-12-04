@@ -22,6 +22,9 @@ local is_ideapad = string.find(require("hostname").getHostname(), "ideapad")
 -- Battery indicator widget
 local battery_widget = nil
 if is_ideapad then battery_widget = require("battery-widget") end
+-- wifi indicator widget
+local net_widgets = nil
+if is_ideapad then net_widgets = require("net_widgets") end
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -175,6 +178,7 @@ end
 screen.connect_signal("property::geometry", set_wallpaper)
 
 local my_battery_widget = nil
+local my_wifi_widget = nil
 if is_ideapad then
     my_battery_widget = battery_widget {
         ac = "ADP0",
@@ -196,6 +200,7 @@ if is_ideapad then
         alert_text = "${AC_BAT}${time_est}",
         warn_full_battery = true,
     }
+    my_wifi_widget = net_widgets.wireless({interface="wlp1s0"})
 end
 
 awful.screen.connect_for_each_screen(function(s)
@@ -248,6 +253,7 @@ awful.screen.connect_for_each_screen(function(s)
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
+            my_wifi_widget,
             my_battery_widget,
         },
     }
