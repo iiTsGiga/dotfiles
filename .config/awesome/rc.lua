@@ -51,6 +51,7 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
+beautiful.font = "DejaVu Sans Bold 10"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "kitty"
@@ -181,13 +182,13 @@ if is_ideapad then
         ac_prefix = "🔌",
         battery_prefix = "🔋",
         percent_colors = {
-            { 25, "red"   },
+            { 25, "orangered" },
             { 50, "orange"},
-            {999, "green" },
+            {999, "lightgreen" },
         },
         listen = true,
         timeout = 10,
-        widget_text = "${AC_BAT}${color_on}${percent}%${color_off}",
+        widget_text = "<span font='DejaVu Sans Bold 10'>${AC_BAT}${color_on}${percent}%${color_off}</span>",
         tooltip_text = "Battery ${state}${time_est}\nCapacity: ${capacity_percent}%",
         alert_threshold = 5,
         alert_timeout = 0,
