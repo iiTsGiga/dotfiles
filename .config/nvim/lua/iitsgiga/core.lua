@@ -22,14 +22,15 @@ vim.opt.showmatch = true
 -- ## displaying
 vim.opt.syntax = "on"
 vim.opt.ruler = true
+vim.opt.colorcolumn = "120"
 vim.opt.laststatus = 2
 vim.opt.showcmd = true
 vim.opt.showmode = true
+vim.opt.shortmess = "t"
 vim.opt.list = true
 vim.opt.wrap = false
 vim.opt.textwidth = 0
 vim.opt.listchars = { trail = "·", tab = ">·", extends = "⏵" }
-vim.opt.shortmess = ""
 vim.opt.encoding = "utf-8"
 vim.opt.fileformat = "unix"
 vim.opt.number = true
