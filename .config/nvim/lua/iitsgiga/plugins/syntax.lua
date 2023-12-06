@@ -3,4 +3,7 @@ return {
         "Fymyte/rasi.vim",
         ft = "rasi",
     },
+    { -- syntax for ltsa tool
+        "vinceau/vim-ltsa-syntax",
+    },
 }
