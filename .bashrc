@@ -62,10 +62,10 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias ll="ls -lah"
 
-if which exa >/dev/null 2>/dev/null; then
+if which exa &>/dev/null; then
   alias ls="exa"
   alias ll="exa -lah"
-  alias tree="exa -lahT"
+  alias tree="exa -lhT"
 fi
 
 alias bashrc='nvim $HOME/.bashrc'
@@ -78,7 +78,7 @@ alias config='git --git-dir=$HOME/.cfg/.git/ --work-tree=$HOME'
 alias configlog='git --git-dir=$HOME/.cfg/.git/ --work-tree=$HOME log --graph --all --oneline -10'
 
 # enable open mpi module
-if which module >/dev/null 2>/dev/null; then
-    module load mpi/openmpi-x86_64
+if which module &>/dev/null; then
+  module load mpi/openmpi-x86_64
 fi
 
