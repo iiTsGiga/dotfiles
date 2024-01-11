@@ -43,7 +43,7 @@ if [[ "$TERM" = "xterm-kitty" ]] && which kitten 2>/dev/null >/dev/null; then
   alias icat="kitten icat"
 fi
 
-if which xdg-open >/dev/null 2>/dev/null; then
+if which xdg-open &>/dev/null; then
   alias open="xdg-open"
 fi
 
