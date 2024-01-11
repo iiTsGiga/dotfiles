@@ -45,4 +45,4 @@ vim.opt.wildmenu = true
 vim.opt.mouse = "a"
 
 -- ## other stuff
-vim.opt.hidden = true
+vim.opt.hidden = false
