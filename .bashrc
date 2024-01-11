@@ -82,3 +82,6 @@ if which module &>/dev/null; then
   module load mpi/openmpi-x86_64
 fi
 
+if [[ -f "$HOME/.cargo/env" ]]; then
+  . "$HOME/.cargo/env"
+fi
