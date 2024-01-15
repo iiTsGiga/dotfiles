@@ -9,7 +9,7 @@ fun! TrimTrailingWhitespace()
 endfun
 ]], {})
 
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-    pattern = { "*" },
-    command = "call TrimTrailingWhitespace()",
-})
+-- vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+--     pattern = { "*" },
+--     command = "call TrimTrailingWhitespace()",
+-- })
