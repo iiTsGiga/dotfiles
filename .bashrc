@@ -77,6 +77,8 @@ alias qmk_flash_right="qmk flash -kb cantor -km iitsgiga_home-row-mods -bl dfu-u
 alias config='git --git-dir=$HOME/.cfg/.git/ --work-tree=$HOME'
 alias configlog='git --git-dir=$HOME/.cfg/.git/ --work-tree=$HOME log --graph --all --oneline -10'
 
+alias py='python'
+
 # enable open mpi module
 if which module &>/dev/null; then
   module load mpi/openmpi-x86_64
