@@ -30,7 +30,7 @@ unset rc
 
 ## tools
 fstr() {
-  grep -Rnw "." -e "$1"
+  grep -Rn "." -P -e "$1"
 }
 
 ## oh my posh
