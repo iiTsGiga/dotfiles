@@ -1,8 +1,10 @@
 vim.g.mapleader = " "
 
 -- convenience
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "<C-d>", "<C-d>zz") -- center cursor when scrolling down half page
+vim.keymap.set("n", "<C-u>", "<C-u>zz") -- center cursor when scrolling up half page
+vim.keymap.set("x", "p", "\"_dP") -- don't copy on paste
+vim.keymap.set("v", "Y", "\"+y") -- yank into system clipboard
 
 -- move selection up/down
 vim.keymap.set("n", "<C-k>", ":m .-2<CR>==")
