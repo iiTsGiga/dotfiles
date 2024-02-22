@@ -80,6 +80,10 @@ alias configlog='git --git-dir=$HOME/.cfg/.git/ --work-tree=$HOME log --graph --
 
 alias py='python'
 
+if which zoxide &>/dev/null; then
+  eval "$(zoxide init --cmd cd bash)"
+fi
+
 # enable open mpi module
 if which module &>/dev/null; then
   module load mpi/openmpi-x86_64
