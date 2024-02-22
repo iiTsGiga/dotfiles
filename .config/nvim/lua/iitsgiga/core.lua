@@ -1,8 +1,5 @@
 -- # basic vim setup
 
--- ## leader key
-vim.g.mapleader = '<space>'
-
 -- ## indenting
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
