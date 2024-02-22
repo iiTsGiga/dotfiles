@@ -1,4 +1,5 @@
 -- # basic vim setup
+vim.opt.updatetime = 100
 
 -- ## indenting
 vim.opt.tabstop = 4
