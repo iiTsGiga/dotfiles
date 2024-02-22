@@ -5,6 +5,10 @@
 [core]
     editor = nvim
 
+[apply]
+    whitespace = fix
+    ignoreWhitespace = change
+
 [pull]
     rebase = true
 
