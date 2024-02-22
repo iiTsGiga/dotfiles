@@ -56,6 +56,7 @@ alias less="bat --paging=always --tabs=4 --style=full --theme='Monokai Extended 
 
 alias v="nvim"
 alias c="clear"
+alias cls="printf '\033[2J\033[3J\033[1;1H'"
 
 alias ..="cd .."
 alias ...="cd ../.."
