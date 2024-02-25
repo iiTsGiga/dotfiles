@@ -15,6 +15,12 @@ vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
 vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv")
 
 -- lsp
+function Ctrl_L()
+    vim.cmd("nohlsearch")
+    vim.cmd("diffupdate")
+    vim.cmd("LspRestart")
+end
+
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(e)
         local opts = { buffer = e.buf }
@@ -31,5 +37,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- vim.keymap.set("i", "<C-n>", function() vim.lsp.buf.completion() end, opts)
         vim.keymap.set("n", "<leader>dn", function() vim.diagnostic.goto_next() end, opts)
         vim.keymap.set("n", "<leader>dN", function() vim.diagnostic.goto_prev() end, opts)
+
+        vim.keymap.set("v", "<C-l>", function() Ctrl_L() end, opts)
+        vim.keymap.set("n", "<C-l>", function() Ctrl_L() end, opts)
     end,
 })
