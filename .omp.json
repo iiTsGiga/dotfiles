@@ -15,6 +15,18 @@
           "type": "time"
         },
         {
+            "foreground": "#ffff00",
+            "style": "plain",
+            "template":  " \uf2bd {{ .UserName }}",
+            "type": "session"
+        },
+        {
+            "foreground": "#00ff00",
+            "style": "plain",
+            "template":  " \udb81\udc8b {{ .HostName }}",
+            "type": "session"
+        },
+        {
           "foreground": "#F3C267",
           "foreground_templates": [
             "{{ if or (.Working.Changed) (.Staging.Changed) }}#FF9248{{ end }}",
