@@ -34,7 +34,9 @@ fstr() {
 }
 
 ## oh my posh
-eval "$(oh-my-posh init bash --config ~/.omp.json)"
+if which oh-my-posh &>/dev/null; then
+  eval "$(oh-my-posh init bash --config ~/.omp.json)"
+fi
 
 ## aliases
 
