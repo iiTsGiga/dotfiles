@@ -13,22 +13,18 @@ local server_settings = {
     },
 
     ["fortls"] = {
-        cmd = {
-            "fortls",
-            "--lowercase_intrinsics",
-            "--hover_signature",
-            "--hover_language=fortran",
-            "--use_signature_help",
-            "--max_line_length=132",
-            "--max_comment_line_length=132",
-        }
+        cmd = {"fortls", "--lowercase_intrinsics", "--hover_signature", "--hover_language=fortran",
+                         "--use_signature_help", "--max_line_length=132", "--max_comment_line_length=132"},
     },
 
     ["clangd"] = {
-        cmd = {
-            "clangd",
-            "--clang-tidy",
-        }
+        cmd = {"clangd", "--clang-tidy", "--function-arg-placeholders=0"},
+    },
+
+    ["sqlls"] = {
+        cmd = {"sql-language-server", "up", "--method", "stdio"},
+        filetypes = {"sql", "mysql"},
+        root_dir = function() return vim.loop.cwd() end,
     },
 }
 
