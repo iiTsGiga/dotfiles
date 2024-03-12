@@ -64,8 +64,10 @@ if command -v nvim &>/dev/null; then
 fi
 
 if command -v bat &>/dev/null; then
-  alias bat="bat --paging=never --tabs=4 --style=plain --theme='Monokai Extended Origin'"
-  alias less="bat --paging=always --tabs=4 --style=full --theme='Monokai Extended Origin'"
+  bat_cmd="bat --tabs=4 --color=auto --theme='Monokai Extended Origin'"
+  alias bat="$bat_cmd --paging=never --style=full"
+  alias cat="$bat_cmd --paging=never --style=plain"
+  alias less="$bat_cmd --paging=always --style=full"
 fi
 
 alias c="clear"
