@@ -38,6 +38,11 @@ if command -v oh-my-posh &>/dev/null; then
   eval "$(oh-my-posh init bash --config ~/.omp.json)"
 fi
 
+## zoxide
+if command -v zoxide &>/dev/null; then
+  eval "$(zoxide init --cmd cd bash)"
+fi
+
 ## aliases
 
 if [[ "$TERM" = "xterm-kitty" ]] && command -v kitten &>/dev/null; then
@@ -87,10 +92,6 @@ alias config='git --git-dir=$HOME/.cfg/.git/ --work-tree=$HOME'
 alias configlog='git --git-dir=$HOME/.cfg/.git/ --work-tree=$HOME log --graph --all --oneline -10'
 
 alias py='python'
-
-if command -v zoxide &>/dev/null; then
-  eval "$(zoxide init --cmd cd bash)"
-fi
 
 # enable open mpi module
 if command -v module &>/dev/null; then
