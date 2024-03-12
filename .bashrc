@@ -34,29 +34,35 @@ fstr() {
 }
 
 ## oh my posh
-if which oh-my-posh &>/dev/null; then
+if command -v oh-my-posh &>/dev/null; then
   eval "$(oh-my-posh init bash --config ~/.omp.json)"
 fi
 
 ## aliases
 
-if [[ "$TERM" = "xterm-kitty" ]] && which kitten 2>/dev/null >/dev/null; then
+if [[ "$TERM" = "xterm-kitty" ]] && command -v kitten &>/dev/null; then
   alias ssh="kitten ssh"
   alias icat="kitten icat"
 fi
 
-if which xdg-open &>/dev/null; then
+if command -v xdg-open &>/dev/null; then
   alias open="xdg-open"
 fi
 
 alias gitlog="git log --graph --all --oneline -10"
 alias gedit="gnome-text-editor"
-alias vim="nvim"
 
-alias bat="bat --paging=never --tabs=4 --style=full --theme='Monokai Extended Origin'"
-alias less="bat --paging=always --tabs=4 --style=full --theme='Monokai Extended Origin'"
+if command -v nvim &>/dev/null; then
+  alias vim="nvim"
+  alias v="nvim"
+  export EDITOR="$(command -v nvim)"
+fi
 
-alias v="nvim"
+if command -v bat &>/dev/null; then
+  alias bat="bat --paging=never --tabs=4 --style=plain --theme='Monokai Extended Origin'"
+  alias less="bat --paging=always --tabs=4 --style=full --theme='Monokai Extended Origin'"
+fi
+
 alias c="clear"
 alias cls="printf '\033[2J\033[3J\033[1;1H'"
 
@@ -65,13 +71,13 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias ll="ls -lah"
 
-if which exa &>/dev/null; then
+if command -v exa &>/dev/null; then
   alias ls="exa"
   alias ll="exa -lah"
   alias tree="exa -lhT"
 fi
 
-alias bashrc='nvim $HOME/.bashrc'
+alias bashrc='$EDITOR $HOME/.bashrc'
 
 alias qmk_compile="qmk compile -kb cantor -km iitsgiga_home-row-mods"
 alias qmk_flash_left="qmk flash -kb cantor -km iitsgiga_home-row-mods -bl dfu-util-split-left"
@@ -82,12 +88,12 @@ alias configlog='git --git-dir=$HOME/.cfg/.git/ --work-tree=$HOME log --graph --
 
 alias py='python'
 
-if which zoxide &>/dev/null; then
+if command -v zoxide &>/dev/null; then
   eval "$(zoxide init --cmd cd bash)"
 fi
 
 # enable open mpi module
-if which module &>/dev/null; then
+if command -v module &>/dev/null; then
   module load mpi/openmpi-x86_64
 fi
 
