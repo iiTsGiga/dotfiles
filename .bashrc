@@ -28,11 +28,6 @@ unset rc
 
 ### CUSTOM COMMANDS
 
-## tools
-fstr() {
-  grep -Rn "." -P -e "$1"
-}
-
 ## oh my posh
 if command -v oh-my-posh &>/dev/null; then
   eval "$(oh-my-posh init bash --config ~/.omp.json)"
@@ -52,6 +47,12 @@ fi
 
 if command -v xdg-open &>/dev/null; then
   alias open="xdg-open"
+fi
+
+if command -v rg &>/dev/null; then
+  alias fstr="rg -uuSP"
+else
+  alias fstr="grep -Rn . -P -e"
 fi
 
 alias gitlog="git log --graph --all --oneline -10"
@@ -82,6 +83,10 @@ if command -v exa &>/dev/null; then
   alias ls="exa"
   alias ll="exa -lah"
   alias tree="exa -lhT"
+fi
+
+if command -v fd &>/dev/null; then
+  alias find="fd -pu"
 fi
 
 alias bashrc='$EDITOR $HOME/.bashrc'
