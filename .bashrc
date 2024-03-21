@@ -62,6 +62,7 @@ if command -v nvim &>/dev/null; then
   alias vim="nvim"
   alias v="nvim"
   export EDITOR="$(command -v nvim)"
+  export MANPAGER='nvim +Man!'
 fi
 
 if command -v bat &>/dev/null; then
