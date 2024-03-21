@@ -82,8 +82,8 @@ alias ll="ls -lah"
 
 if command -v exa &>/dev/null; then
   alias ls="exa"
-  alias ll="exa -lah"
-  alias tree="exa -lhT"
+  alias ll="exa -lgha"
+  alias tree="exa -lghT"
 fi
 
 if command -v fd &>/dev/null; then
