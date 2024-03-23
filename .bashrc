@@ -87,7 +87,7 @@ if command -v exa &>/dev/null; then
 fi
 
 if command -v fd &>/dev/null; then
-  alias find="fd -pu"
+  alias fd="fd -pu"
 fi
 
 alias bashrc='$EDITOR $HOME/.bashrc'
