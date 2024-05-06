@@ -6,3 +6,5 @@ require("iitsgiga.keymaps")
 require("iitsgiga.highlight_yanked")
 
 require("iitsgiga.lazy")
+
+vim.cmd("colorscheme onenord")
