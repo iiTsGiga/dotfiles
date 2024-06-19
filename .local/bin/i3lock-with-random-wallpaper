@@ -1,10 +1,12 @@
 #!/usr/bin/bash
-if ! /usr/bin/pgrep -x i3lock &>/dev/null; then
-  wallpaper="$(/usr/bin/find /home/manoppermann/Pictures/Wallpapers -type f -name '*.png' 2>/dev/null | /usr/bin/sort -R | /usr/bin/head -n1)"
-  lock="/usr/bin/i3lock -e -f -p default"
+
+WALLPAPER_DIR="$HOME/Pictures/Wallpapers"
+
+if ! pgrep -x i3lock &>/dev/null; then
+  wallpaper="$(find $WALLPAPER_DIR -type f -name '*.png' 2>/dev/null | sort -R | head -n1)"
   if [[ -n "$wallpaper" ]]; then
-    $lock -t -i "$wallpaper"
+    i3lock -efti "$wallpaper"
   else
-    $lock -c 000000
+    i3lock -efc 000000
   fi
 fi
