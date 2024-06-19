@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+LOCK_IMG="$HOME/.local/share/mylock/lock.png"
+MIXER_SET="amixer -D pulse set Master"
+PLAYER_CTL="playerctl -p spotify"
+LOG="/dev/null"
+
+TEXT_COLOR="ffffffff"
+MODIF_COLOR="33ff00bf"
+TYPE_COLOR="33ff00ef"
+WRONG_COLOR="ff3300bf"
+VERIF_COLOR="0099ffbf"
+INSIDE_COLOR="00000000"
+LINE_COLOR="ffffffbf"
+INDICATOR_POS="ix:iy+r*3/2"
+FONT="Fira sans"
+
+i3lock -efS 1 -B 8 -Ci "$LOCK_IMG" \
+  --indicator \
+    --no-modkey-text \
+    --line-color        "$LINE_COLOR" \
+    --inside-color      "$INSIDE_COLOR" \
+    --modif-color       "$MODIF_COLOR" \
+    --keyhl-color       "$TYPE_COLOR" \
+    --bshl-color        "$TYPE_COLOR" \
+  --verif-text "verifying…" \
+    --verif-font    "$FONT" \
+    --verif-pos     "$INDICATOR_POS" \
+    --verif-color   "$VERIF_COLOR" \
+    --ringver-color "$VERIF_COLOR" \
+    --insidever-color   "$INSIDE_COLOR" \
+  --wrong-text "wrong!" \
+    --wrong-font      "$FONT" \
+    --wrong-pos       "$INDICATOR_POS" \
+    --wrong-color     "$WRONG_COLOR" \
+    --ringwrong-color "$WRONG_COLOR" \
+    --insidewrong-color "$INSIDE_COLOR" \
+  --custom-key-commands \
+    --cmd-media-play  "$PLAYER_CTL play-pause >> $LOG" \
+    --cmd-media-pause "$PLAYER_CTL play-pause >> $LOG" \
+    --cmd-media-stop  "$PLAYER_CTL stop       >> $LOG" \
+    --cmd-media-next  "$PLAYER_CTL next       >> $LOG" \
+    --cmd-media-prev  "$PLAYER_CTL previous   >> $LOG" \
+    --cmd-audio-mute  "$MIXER_SET  1+ toggle  >> $LOG" \
+    --cmd-volume-up   "$MIXER_SET  5%+        >> $LOG" \
+    --cmd-volume-down "$MIXER_SET  5%-        >> $LOG" \
+  # --no-verify
+
