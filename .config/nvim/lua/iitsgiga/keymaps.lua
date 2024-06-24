@@ -6,6 +6,8 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz") -- center cursor when scrolling up half 
 vim.keymap.set("x", "p", "\"_dP") -- don't copy on paste
 vim.keymap.set("v", "Y", "\"+y") -- yank into system clipboard
 
+vim.keymap.set("n", "<CR>", ":noh<CR>") -- clear highlight after search
+
 -- move selection up/down
 vim.keymap.set("n", "<C-k>", ":m .-2<CR>==")
 vim.keymap.set("n", "<C-j>", ":m .+1<CR>==")
